@@ -64,9 +64,9 @@ function ConfirmPage() {
             <img
               src={cashLogo.url}
               alt="كاشلا"
-              width={84}
-              height={123}
-              className="h-[84px] w-auto object-contain"
+              width={68}
+              height={100}
+              className="h-[68px] w-auto object-contain"
             />
             <div className="text-right">
               <p className="text-[13px] text-foreground/45">من</p>
@@ -78,9 +78,9 @@ function ConfirmPage() {
             <img
               src={cashLogo.url}
               alt="كاشلا"
-              width={84}
-              height={123}
-              className="h-[84px] w-auto object-contain"
+              width={68}
+              height={100}
+              className="h-[68px] w-auto object-contain"
             />
             <div className="text-right">
               <p className="text-[13px] text-foreground/45">إلى</p>
