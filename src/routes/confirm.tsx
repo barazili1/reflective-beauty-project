@@ -76,11 +76,11 @@ function ConfirmPage() {
           <div className="relative h-px bg-foreground/10" />
           <div className="relative flex items-center justify-start gap-3 py-2.5">
             <img
-              src={vodafoneCashLogo.url}
-              alt="فودافون كاش"
-              width={46}
-              height={56}
-              className="h-[46px] w-auto object-contain"
+              src={cashLogo.url}
+              alt="كاشلا"
+              width={64}
+              height={94}
+              className="h-[64px] w-auto object-contain"
             />
             <div className="text-right">
               <p className="text-[13px] text-foreground/45">إلى</p>
