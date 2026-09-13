@@ -78,9 +78,9 @@ function ConfirmPage() {
             <img
               src={cashLogo.url}
               alt="كاشلا"
-              width={64}
-              height={94}
-              className="h-[64px] w-auto object-contain"
+              width={84}
+              height={123}
+              className="h-[84px] w-auto object-contain"
             />
             <div className="text-right">
               <p className="text-[13px] text-foreground/45">إلى</p>
