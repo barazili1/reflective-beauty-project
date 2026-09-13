@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import vodafoneCashLogo from "@/assets/cash-logo.asset.json";
+import cashLogo from "@/assets/kashla-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
 import { getRandomSenderName } from "@/lib/sender-names";
 
@@ -62,11 +62,11 @@ function ConfirmPage() {
           />
           <div className="relative flex items-center justify-start gap-3 py-2.5">
             <img
-              src={vodafoneCashLogo.url}
-              alt="فودافون كاش"
-              width={46}
-              height={56}
-              className="h-[46px] w-auto object-contain"
+              src={cashLogo.url}
+              alt="كاشلا"
+              width={84}
+              height={123}
+              className="h-[84px] w-auto object-contain"
             />
             <div className="text-right">
               <p className="text-[13px] text-foreground/45">من</p>
@@ -76,11 +76,11 @@ function ConfirmPage() {
           <div className="relative h-px bg-foreground/10" />
           <div className="relative flex items-center justify-start gap-3 py-2.5">
             <img
-              src={vodafoneCashLogo.url}
-              alt="فودافون كاش"
-              width={46}
-              height={56}
-              className="h-[46px] w-auto object-contain"
+              src={cashLogo.url}
+              alt="كاشلا"
+              width={84}
+              height={123}
+              className="h-[84px] w-auto object-contain"
             />
             <div className="text-right">
               <p className="text-[13px] text-foreground/45">إلى</p>
