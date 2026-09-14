@@ -41,7 +41,7 @@ function ConfirmPage() {
     setTimeout(() => {
       void navigate({
         to: "/success",
-        search: { amount, phone, senderName },
+        search: { amount, phone, senderName, arabicName },
       });
     }, delay);
   };
