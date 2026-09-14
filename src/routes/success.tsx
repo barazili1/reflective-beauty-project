@@ -242,8 +242,8 @@ function SuccessPage() {
           </div>
         </div>
 
-        <div className="flex-1" />
       </div>
+
 
       {/* Footer logos + buttons */}
       <div className="shrink-0 px-5 pb-3 pt-2">
