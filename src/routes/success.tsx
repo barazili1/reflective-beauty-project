@@ -3,6 +3,7 @@ import { Check, ChevronRight, Share2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import cashLogo from "@/assets/kashla-logo.asset.json";
+import vodafoneCashLogo from "@/assets/cash-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
 
 export const Route = createFileRoute("/success")({
