@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import cashLogo from "@/assets/kashla-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
 import loadingLogo from "@/assets/vodafone-loading-logo.png.asset.json";
-import { getRandomArabicName, getRandomSenderName } from "@/lib/sender-names";
+import { getSenderNameForPhone } from "@/lib/sender-names";
 
 export const Route = createFileRoute("/confirm")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -30,8 +30,7 @@ function ConfirmPage() {
   const navigate = useNavigate();
   const [greeting, setGreeting] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const senderName = useMemo(() => getRandomSenderName(), []);
-  const arabicName = useMemo(() => getRandomArabicName(), []);
+  const senderName = useMemo(() => getSenderNameForPhone(phone), [phone]);
   const total = amount.toFixed(1);
 
   const handleConfirm = () => {
@@ -41,7 +40,7 @@ function ConfirmPage() {
     setTimeout(() => {
       void navigate({
         to: "/success",
-        search: { amount, phone, senderName, arabicName },
+        search: { amount, phone, senderName },
       });
     }, delay);
   };
@@ -101,7 +100,6 @@ function ConfirmPage() {
             <div className="text-right">
               <p className="text-[13px] text-foreground/45">إلى</p>
               <p className="mt-1 text-right text-[16px] font-bold tracking-wide" dir="ltr">{phone || "01087163221"}</p>
-              <p className="mt-1 text-right text-[14px] font-bold text-foreground">{arabicName}</p>
               <p className="mt-1 text-left text-[14px] text-foreground/60" dir="ltr">{senderName}</p>
             </div>
           </div>

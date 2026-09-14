@@ -11,7 +11,6 @@ export const Route = createFileRoute("/success")({
     amount: Number(search["amount"]) || 0,
     phone: String(search["phone"] ?? ""),
     senderName: String(search["senderName"] ?? ""),
-    arabicName: String(search["arabicName"] ?? ""),
   }),
   head: () => ({
     meta: [
@@ -94,7 +93,7 @@ function VodafoneRedLogo({ size = 36 }: { size?: number }) {
 }
 
 function SuccessPage() {
-  const { amount, phone, senderName, arabicName } = Route.useSearch();
+  const { amount, phone, senderName } = Route.useSearch();
   const [date, setDate] = useState("");
   const txNumber = useMemo(
     () => String(Math.floor(Math.random() * 900000000000) + 100000000000),
@@ -199,11 +198,6 @@ function SuccessPage() {
               >
                 {phone || "01087163221"}
               </p>
-              {arabicName && (
-                <p className="mt-1 text-right text-[14px] font-bold text-foreground">
-                  {arabicName}
-                </p>
-              )}
               <p
                 className="mt-1 text-left text-[14px] text-foreground/60"
                 dir="ltr"
