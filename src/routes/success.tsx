@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, ChevronRight, Share2 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import cashLogo from "@/assets/kashla-logo.asset.json";
 import vodafoneCashLogo from "@/assets/cash-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
+import { addTransfer } from "@/lib/transfer-history";
 
 export const Route = createFileRoute("/success")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -108,6 +109,13 @@ function SuccessPage() {
       `${now.getDate()} ${arabicMonths[now.getMonth()]} ${now.getFullYear()} ${h}:${m}`,
     );
   }, []);
+
+  const saved = useRef(false);
+  useEffect(() => {
+    if (saved.current || amount <= 0) return;
+    saved.current = true;
+    addTransfer(amount, phone, senderName);
+  }, [amount, phone, senderName]);
 
   return (
     <main

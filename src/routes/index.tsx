@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowUpRight, Bell, ChevronLeft, CreditCard, Delete, Eye, EyeOff, Fingerprint, Gift, HelpCircle, Lock, Send, Store, X } from "lucide-react";
-import { type SVGProps, useState } from "react";
+import { type SVGProps, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import electricSahlIcon from "@/assets/icon-electric-sahl.asset.json";
@@ -11,6 +11,7 @@ import offerBanner from "@/assets/offer-banner.jpg";
 import prosecutionIcon from "@/assets/icon-prosecution.asset.json";
 import vodafoneCashLogo from "@/assets/cash-logo.asset.json";
 import loadingLogo from "@/assets/vodafone-loading-logo.png.asset.json";
+import { getTransfers, formatArabicNumber, formatArabicDate, type TransferRecord } from "@/lib/transfer-history";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -165,6 +166,14 @@ function Index() {
   const [transferLoading, setTransferLoading] = useState(false);
   const navigate = useNavigate();
 
+  const [transfers, setTransfers] = useState<TransferRecord[]>([]);
+  useEffect(() => {
+    setTransfers(getTransfers());
+  }, []);
+  const totalTransferred = transfers.reduce((s, t) => s + t.amount, 0);
+  const balance = 70000 - totalTransferred;
+  const expenses = 7314.7 + totalTransferred;
+
   const goToTransfer = () => {
     setTransferLoading(true);
     setTimeout(() => {
@@ -223,7 +232,7 @@ function Index() {
                   : "text-[20px] font-bold blur-[7px] select-none"
               }
             >
-              ٧٠,٠٠٠٫٠٠ ج.م
+              {formatArabicNumber(balance)} ج.م
             </span>
             <div className="flex items-center gap-6">
               <Button
@@ -348,7 +357,7 @@ function Index() {
               />
             </svg>
             <p className="absolute bottom-2 right-3 flex items-baseline gap-1 text-[15px]" dir="rtl">
-              <span className="text-[34px] font-normal leading-none">٧٣١٤٫٧٠</span>
+              <span className="text-[34px] font-normal leading-none">{formatArabicNumber(expenses)}</span>
               <span>جنيه</span>
             </p>
           </div>
@@ -380,6 +389,13 @@ function Index() {
           </div>
           <div className="flex flex-col gap-3" dir="rtl">
             {[
+              ...transfers.map((t) => ({
+                title: `تحويل إلى ${t.senderName || t.phone}`,
+                date: formatArabicDate(t.timestamp),
+                amount: t.amount % 1 === 0 ? t.amount.toString() : t.amount.toFixed(2),
+                icon: ArrowUpRight,
+                color: "bg-[#8b5a2b]",
+              })),
               {
                 title: "تحويل للتخزين",
                 date: "13 سبتمبر 2026 - 05:30 م",
@@ -401,8 +417,8 @@ function Index() {
                 icon: Fingerprint,
                 color: "bg-[#f9ab00]",
               },
-            ].map((tx) => (
-              <div key={tx.title} className="flex items-center justify-between">
+            ].map((tx, i) => (
+              <div key={i} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div
                     className={`grid size-11 shrink-0 place-items-center rounded-[12px] text-white ${tx.color}`}
