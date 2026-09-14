@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import cashLogo from "@/assets/kashla-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
 import loadingLogo from "@/assets/vodafone-loading-logo.png.asset.json";
-import { getRandomArabicName, getRandomSenderName } from "@/lib/sender-names";
+import { getSenderNameForPhone } from "@/lib/sender-names";
 
 export const Route = createFileRoute("/confirm")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -30,8 +30,7 @@ function ConfirmPage() {
   const navigate = useNavigate();
   const [greeting, setGreeting] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const senderName = useMemo(() => getRandomSenderName(), []);
-  const arabicName = useMemo(() => getRandomArabicName(), []);
+  const senderName = useMemo(() => getSenderNameForPhone(phone), [phone]);
   const total = amount.toFixed(1);
 
   const handleConfirm = () => {
