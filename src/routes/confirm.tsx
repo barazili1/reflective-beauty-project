@@ -27,9 +27,23 @@ export const Route = createFileRoute("/confirm")({
 
 function ConfirmPage() {
   const { amount, phone } = Route.useSearch();
+  const navigate = useNavigate();
   const [greeting, setGreeting] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
   const senderName = useMemo(() => getRandomSenderName(), []);
   const total = amount.toFixed(1);
+
+  const handleConfirm = () => {
+    if (confirmLoading) return;
+    setConfirmLoading(true);
+    const delay = 3000 + Math.random() * 7000;
+    setTimeout(() => {
+      void navigate({
+        to: "/success",
+        search: { amount, phone, senderName },
+      });
+    }, delay);
+  };
 
   return (
     <main dir="rtl" className="mx-auto flex h-dvh max-w-[430px] flex-col overflow-hidden bg-[#f2f2f4] text-foreground shadow-2xl">
