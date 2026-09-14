@@ -198,11 +198,6 @@ function SuccessPage() {
               >
                 {phone || "01087163221"}
               </p>
-              {arabicName && (
-                <p className="mt-1 text-right text-[14px] font-bold text-foreground">
-                  {arabicName}
-                </p>
-              )}
               <p
                 className="mt-1 text-left text-[14px] text-foreground/60"
                 dir="ltr"
