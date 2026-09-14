@@ -247,13 +247,13 @@ function SuccessPage() {
       {/* Footer logos + buttons */}
       <div className="shrink-0 px-5 pb-3 pt-2">
         <div className="mb-3 flex items-center justify-center gap-3">
-          <VodafoneRedLogo size={36} />
-          <div className="h-[36px] w-px bg-foreground/15" />
           <img
             src={cashLogo.url}
             alt="كاشلا"
             className="h-[40px] w-auto object-contain"
           />
+          <div className="h-[36px] w-px bg-[#e60000]" />
+          <VodafoneRedLogo size={36} />
         </div>
         <div className="flex gap-2.5">
           <button
