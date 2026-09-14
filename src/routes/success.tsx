@@ -6,7 +6,7 @@ import cashLogo from "@/assets/kashla-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
 
 export const Route = createFileRoute("/success")({
-  validateSearch: (search: Record<string, unknown>) => ({
+ 
     amount: Number(search["amount"]) || 0,
     phone: String(search["phone"] ?? ""),
     senderName: String(search["senderName"] ?? ""),
