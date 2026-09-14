@@ -113,7 +113,7 @@ function SuccessPage() {
   return (
     <main
       dir="rtl"
-      className="mx-auto flex h-dvh max-w-[430px] flex-col overflow-hidden bg-[#F8F9FA] text-foreground shadow-2xl"
+      className="mx-auto flex min-h-dvh max-w-[430px] flex-col bg-[#F8F9FA] text-foreground shadow-2xl"
     >
       {/* Header */}
       <header className="relative flex h-[52px] shrink-0 items-center justify-center bg-white">
