@@ -31,6 +31,7 @@ function ConfirmPage() {
   const [greeting, setGreeting] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const senderName = useMemo(() => getRandomSenderName(), []);
+  const arabicName = useMemo(() => getRandomArabicName(), []);
   const total = amount.toFixed(1);
 
   const handleConfirm = () => {
