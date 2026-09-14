@@ -154,11 +154,26 @@ function ConfirmPage() {
       <div className="shrink-0 px-5 pb-3 pt-2">
         <button
           type="button"
-          className="h-[52px] w-full rounded-[14px] bg-[#e60000] text-[16px] font-normal text-white transition-transform active:scale-[0.98]"
+          disabled={confirmLoading}
+          onClick={handleConfirm}
+          className="h-[52px] w-full rounded-[14px] bg-[#e60000] text-[16px] font-normal text-white transition-transform active:scale-[0.98] disabled:opacity-60"
         >
           تأكيد
         </button>
       </div>
+
+      {confirmLoading && (
+        <div className="fixed inset-0 z-40 mx-auto flex max-w-[430px] flex-col items-center justify-center bg-[#7a7a7a]/90">
+          <img
+            src={loadingLogo.url}
+            alt="جاري التحميل"
+            width={80}
+            height={80}
+            className="loading-beat size-[72px] rounded-full object-cover"
+          />
+          <p className="mt-6 text-[20px] font-medium text-white">جاري التحميل</p>
+        </div>
+      )}
     </main>
   );
 }
