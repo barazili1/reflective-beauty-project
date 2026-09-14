@@ -101,6 +101,7 @@ function ConfirmPage() {
             <div className="text-right">
               <p className="text-[13px] text-foreground/45">إلى</p>
               <p className="mt-1 text-right text-[16px] font-bold tracking-wide" dir="ltr">{phone || "01087163221"}</p>
+              <p className="mt-1 text-right text-[14px] font-bold text-foreground">{arabicName}</p>
               <p className="mt-1 text-left text-[14px] text-foreground/60" dir="ltr">{senderName}</p>
             </div>
           </div>
