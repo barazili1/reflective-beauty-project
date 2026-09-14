@@ -494,7 +494,7 @@ function Index() {
             alt="المحفظة"
             width={90}
             height={110}
-            className="h-8 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
           <span className="mt-1 text-[11px] font-bold">المحفظة</span>
         </Button>
