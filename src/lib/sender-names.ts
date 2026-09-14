@@ -9,7 +9,19 @@ const SENDER_NAMES = [
   "Mostafa I**** Q**** F****",
 ];
 
+const ARABIC_NAMES = [
+  "هبه ع**** م ****",
+  "احمد ص**** ا ****",
+  "منى ف**** أ ****",
+  "يوسف ك**** ت ****",
+  "ساره ح**** ب ****",
+  "عمر ن**** و ****",
+  "ليلى ر**** ي ****",
+  "مصطفى ع**** ق ****",
+];
+
 const STORAGE_KEY = "confirm.lastSenderName";
+const ARABIC_STORAGE_KEY = "confirm.lastArabicName";
 
 export function getRandomSenderName(): string {
   let lastName: string | null = null;
@@ -24,6 +36,26 @@ export function getRandomSenderName(): string {
 
   try {
     sessionStorage.setItem(STORAGE_KEY, chosen);
+  } catch {
+    // ignore storage errors (e.g. private mode)
+  }
+
+  return chosen;
+}
+
+export function getRandomArabicName(): string {
+  let lastName: string | null = null;
+  try {
+    lastName = sessionStorage.getItem(ARABIC_STORAGE_KEY);
+  } catch {
+    lastName = null;
+  }
+
+  const pool = ARABIC_NAMES.length > 1 ? ARABIC_NAMES.filter((name) => name !== lastName) : ARABIC_NAMES;
+  const chosen: string = pool[Math.floor(Math.random() * pool.length)] ?? ARABIC_NAMES[0] ?? "";
+
+  try {
+    sessionStorage.setItem(ARABIC_STORAGE_KEY, chosen);
   } catch {
     // ignore storage errors (e.g. private mode)
   }
