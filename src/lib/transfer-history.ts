@@ -58,10 +58,12 @@ export function getExpenses(): number {
 /** Format a number with Arabic-Indic digits, thousands separator, and Arabic decimal point. */
 export function formatArabicNumber(value: number, decimals = 2): string {
   const fixed = value.toFixed(decimals);
-  const [intPart, decPart] = fixed.split(".");
+  const parts = fixed.split(".");
+  const intPart = parts[0] ?? "0";
+  const decPart = parts[1] ?? "";
   const withThousands = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const toArabic = (s: string) =>
-    s.replace(/[0-9]/g, (d) => arabicDigits[parseInt(d, 10)]);
+    s.replace(/[0-9]/g, (d) => arabicDigits[parseInt(d, 10)]!);
   if (decPart) {
     return toArabic(withThousands) + "٫" + toArabic(decPart);
   }
