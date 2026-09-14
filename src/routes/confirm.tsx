@@ -1,9 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import cashLogo from "@/assets/kashla-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
+import loadingLogo from "@/assets/vodafone-loading-logo.png.asset.json";
 import { getRandomSenderName } from "@/lib/sender-names";
 
 export const Route = createFileRoute("/confirm")({
@@ -26,9 +27,23 @@ export const Route = createFileRoute("/confirm")({
 
 function ConfirmPage() {
   const { amount, phone } = Route.useSearch();
+  const navigate = useNavigate();
   const [greeting, setGreeting] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
   const senderName = useMemo(() => getRandomSenderName(), []);
   const total = amount.toFixed(1);
+
+  const handleConfirm = () => {
+    if (confirmLoading) return;
+    setConfirmLoading(true);
+    const delay = 3000 + Math.random() * 7000;
+    setTimeout(() => {
+      void navigate({
+        to: "/success",
+        search: { amount, phone, senderName },
+      });
+    }, delay);
+  };
 
   return (
     <main dir="rtl" className="mx-auto flex h-dvh max-w-[430px] flex-col overflow-hidden bg-[#f2f2f4] text-foreground shadow-2xl">
@@ -139,11 +154,26 @@ function ConfirmPage() {
       <div className="shrink-0 px-5 pb-3 pt-2">
         <button
           type="button"
-          className="h-[52px] w-full rounded-[14px] bg-[#e60000] text-[16px] font-normal text-white transition-transform active:scale-[0.98]"
+          disabled={confirmLoading}
+          onClick={handleConfirm}
+          className="h-[52px] w-full rounded-[14px] bg-[#e60000] text-[16px] font-normal text-white transition-transform active:scale-[0.98] disabled:opacity-60"
         >
           تأكيد
         </button>
       </div>
+
+      {confirmLoading && (
+        <div className="fixed inset-0 z-40 mx-auto flex max-w-[430px] flex-col items-center justify-center bg-[#7a7a7a]/90">
+          <img
+            src={loadingLogo.url}
+            alt="جاري التحميل"
+            width={80}
+            height={80}
+            className="loading-beat size-[72px] rounded-full object-cover"
+          />
+          <p className="mt-6 text-[20px] font-medium text-white">جاري التحميل</p>
+        </div>
+      )}
     </main>
   );
 }
