@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import cashLogo from "@/assets/kashla-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
 import loadingLogo from "@/assets/vodafone-loading-logo.png.asset.json";
-import { getRandomSenderName } from "@/lib/sender-names";
+import { getRandomArabicName, getRandomSenderName } from "@/lib/sender-names";
 
 export const Route = createFileRoute("/confirm")({
   validateSearch: (search: Record<string, unknown>) => ({
