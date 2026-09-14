@@ -3,6 +3,7 @@ import { Check, ChevronRight, Share2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import cashLogo from "@/assets/kashla-logo.asset.json";
+import vodafoneCashLogo from "@/assets/cash-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
 
 export const Route = createFileRoute("/success")({
@@ -112,7 +113,7 @@ function SuccessPage() {
   return (
     <main
       dir="rtl"
-      className="mx-auto flex h-dvh max-w-[430px] flex-col overflow-hidden bg-[#F8F9FA] text-foreground shadow-2xl"
+      className="mx-auto flex min-h-dvh max-w-[430px] flex-col bg-[#F8F9FA] text-foreground shadow-2xl"
     >
       {/* Header */}
       <header className="relative flex h-[52px] shrink-0 items-center justify-center bg-white">
@@ -241,15 +242,15 @@ function SuccessPage() {
           </div>
         </div>
 
-        <div className="flex-1" />
       </div>
+
 
       {/* Footer logos + buttons */}
       <div className="shrink-0 px-5 pb-3 pt-2">
         <div className="mb-3 flex items-center justify-center gap-3">
           <img
-            src={cashLogo.url}
-            alt="كاشلا"
+            src={vodafoneCashLogo.url}
+            alt="كاش"
             className="h-[40px] w-auto object-contain"
           />
           <div className="h-[36px] w-px bg-[#e60000]" />
