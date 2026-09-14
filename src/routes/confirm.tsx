@@ -1,9 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import cashLogo from "@/assets/kashla-logo.asset.json";
 import cashWatermark from "@/assets/cash-watermark.png.asset.json";
+import loadingLogo from "@/assets/vodafone-loading-logo.png.asset.json";
 import { getRandomSenderName } from "@/lib/sender-names";
 
 export const Route = createFileRoute("/confirm")({
